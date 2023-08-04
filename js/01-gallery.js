@@ -42,9 +42,25 @@ function handlerClick(evt) {
 
   const itemImg = galleryItems.find(({ original }) => original === dataSource);
 
-  const instance = basicLightbox.create(`
-      <img src="${itemImg.original}"/>
-  `);
+  // const instance = basicLightbox.create(`
+  //     <img src="${itemImg.original}"/>
+  // `);
+  // instance.show();
+
+  // document.addEventListener("keyup", (evt) => {
+  //   if (evt.code === "Escape") {
+  //     instance.close();
+  //   }
+  // });
+
+  const instance = basicLightbox.create(`<img src="${itemImg.original}"/>`, {
+    onShow: (instance) => {
+      console.log("Спливаюче вікно показано.");
+    },
+    onClose: (instance) => {
+      console.log("Спливаюче вікно закрито.");
+    },
+  });
   instance.show();
 
   document.addEventListener("keyup", (evt) => {
@@ -52,16 +68,6 @@ function handlerClick(evt) {
       instance.close();
     }
   });
-
-  // const instance = basicLightbox.create(
-  //   `
-  //     <img src="${itemImg.original}"/>
-  // `,
-  //   {
-  //     onShow: (instance) => {},
-  //     onClose: (instance) => {},
-  //   }
-  // );
 }
 
 //=================
