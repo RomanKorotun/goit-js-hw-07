@@ -34,8 +34,9 @@ function handlerClick(evt) {
   if (!evt.target.classList.contains("gallery__image")) {
     return;
   }
-  var lightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionDelay: 250,
-  });
 }
+
+new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
