@@ -30,29 +30,6 @@ function createMarkup(arr) {
 }
 galleryList.insertAdjacentHTML("beforeend", createMarkup(galleryItems));
 
-// galleryList.addEventListener("click", handlerClick);
-
-// function handlerClick(evt) {
-//   evt.preventDefault();
-//   if (!evt.target.classList.contains("gallery__image")) {
-//     return;
-//   }
-
-//   const dataSource = evt.target.dataset.source;
-
-//   const itemImg = galleryItems.find(({ original }) => original === dataSource);
-
-//   // const instance = basicLightbox.create(`
-//   //     <img src="${itemImg.original}"/>
-//   // `);
-//   // instance.show();
-
-//   // document.addEventListener("keyup", (evt) => {
-//   //   if (evt.code === "Escape") {
-//   //     instance.close();
-//   //   }
-//   // });
-
 //   const instance = basicLightbox.create(`<img src="${itemImg.original}"/>`, {
 //     onShow: (instance) => {
 //       console.log("Спливаюче вікно показано.");
@@ -62,15 +39,6 @@ galleryList.insertAdjacentHTML("beforeend", createMarkup(galleryItems));
 //     },
 //   });
 //   instance.show();
-
-//   document.addEventListener("keyup", (evt) => {
-//     if (evt.code === "Escape") {
-//       instance.close();
-//     }
-//   });
-// }
-
-//=================
 
 galleryList.addEventListener("click", handlerClick);
 
