@@ -30,16 +30,6 @@ function createMarkup(arr) {
 }
 galleryList.insertAdjacentHTML("beforeend", createMarkup(galleryItems));
 
-//   const instance = basicLightbox.create(`<img src="${itemImg.original}"/>`, {
-//     onShow: (instance) => {
-//       console.log("Спливаюче вікно показано.");
-//     },
-//     onClose: (instance) => {
-//       console.log("Спливаюче вікно закрито.");
-//     },
-//   });
-//   instance.show();
-
 galleryList.addEventListener("click", handlerClick);
 
 function handlerClick(evt) {
@@ -52,14 +42,25 @@ function handlerClick(evt) {
 
   const itemImg = galleryItems.find(({ original }) => original === dataSource);
 
-  const instance = basicLightbox.create(`
+  const instance = basicLightbox.create(
+    `
       <img src="${itemImg.original}"/>
-  `);
-  instance.show();
+  `,
+    {
+      onShow: (instance) => {
+        document.addEventListener("keyup", handlerKeyUp);
+      },
+      onClose: (instance) => {
+        document.removeEventListener("keyup", handlerKeyUp);
+      },
+    }
+  );
 
-  document.addEventListener("keyup", (evt) => {
+  function handlerKeyUp(evt) {
     if (evt.code === "Escape") {
       instance.close();
     }
-  });
+  }
+
+  instance.show();
 }
