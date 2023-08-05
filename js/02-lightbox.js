@@ -27,15 +27,6 @@ function createMarkup(arr) {
 }
 createMarkup(galleryItems);
 
-galleryList.addEventListener("click", handlerClick);
-
-function handlerClick(evt) {
-  evt.preventDefault();
-  if (!evt.target.classList.contains("gallery__image")) {
-    return;
-  }
-}
-
 new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
